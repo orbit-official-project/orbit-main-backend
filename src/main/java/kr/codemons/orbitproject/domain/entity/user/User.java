@@ -1,14 +1,14 @@
 package kr.codemons.orbitproject.domain.entity.user;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "MEMBER")
 public class User {
+
+    protected User() {}
 
     public User(String name, String email, String password) {
         this.name = name;
