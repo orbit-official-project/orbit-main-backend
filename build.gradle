@@ -20,6 +20,8 @@ repositories {
 
 dependencies {
 
+	implementation 'org.springframework.boot:spring-boot-starter-mail' 				// Email Sender
+
 	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1' 		// JWT Provider
 	implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1' // JWT Provider
 	implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.1' 	// JWT Provider
