@@ -9,7 +9,6 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
 
-@Slf4j
 @Configuration
 public class MailBeanConfig {
 
