@@ -19,13 +19,11 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public void sendCertificationMail (String email)  {
         MimeMessage message = javaMailSender.createMimeMessage();
-        MimeMessageHelper helper = initializeMimeMessageHelper(message, email);
-
         javaMailSender.send(message);
     }
 
-    private String createCode (String seed) {
-        return "testCode";
+    private String createCode () {
+        return String.valueOf((int)(Math.random() * (99999 - 10000 + 1)) + 10000);
     }
 
     private MimeMessageHelper initializeMimeMessageHelper (MimeMessage mimeMessage, String setTo) {
@@ -35,7 +33,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setFrom(smtpEmail);
             helper.setTo(setTo);
             helper.setSubject("test subject");
-            helper.setText(createCode("dummyText"));
+            helper.setText(createCode());
         }
         catch (Exception e) {
             throw new InitMessageHelperException();
