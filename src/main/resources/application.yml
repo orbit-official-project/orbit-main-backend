@@ -5,10 +5,14 @@ jwt:
 smtp:
   host: smtp.naver.com
   email: spok_nb@naver.com
-  password:
+  password: 
   port: 465
 
 spring:
+  redis:
+    host: localhost
+    port: 6379
+
   datasource:
     url: jdbc:h2:tcp://localhost/~/test
     username: sa

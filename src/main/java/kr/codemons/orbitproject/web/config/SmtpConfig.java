@@ -11,7 +11,7 @@ import java.util.Properties;
 
 @Slf4j
 @Configuration
-public class MailBeanConfig {
+public class SmtpConfig {
 
     @Value("${smtp.host}") private String smtpHost;
     @Value("${smtp.email}") private String smtpEmail;
