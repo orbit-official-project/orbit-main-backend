@@ -1,10 +1,9 @@
 package kr.codemons.orbitproject.domain.entity.cache;
 
-import jakarta.persistence.Id;
 import lombok.Getter;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.TimeToLive;
-import org.springframework.data.redis.core.index.Indexed;
 
 /**
  * Redis Entity
@@ -13,10 +12,10 @@ import org.springframework.data.redis.core.index.Indexed;
  */
 
 @Getter
-@RedisHash(value = "email_session")
+@RedisHash(value = "EmailSession")
 public class EmailSession {
 
-    @Id @Indexed
+    @Id
     private String email;
 
     private String code;

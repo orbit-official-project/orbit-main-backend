@@ -18,7 +18,7 @@ public class User {
         this.avatar = avatar;
     }
     
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private String handler;
     private String name;
 
