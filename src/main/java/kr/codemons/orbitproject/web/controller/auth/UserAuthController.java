@@ -2,6 +2,7 @@ package kr.codemons.orbitproject.web.controller.auth;
 
 import kr.codemons.orbitproject.domain.dto.UserAuthVerifyDto;
 import kr.codemons.orbitproject.domain.entity.cache.EmailSession;
+import kr.codemons.orbitproject.domain.entity.user.User;
 import kr.codemons.orbitproject.domain.exception.InvalidVerifyCodeException;
 import kr.codemons.orbitproject.domain.service.EmailService;
 import kr.codemons.orbitproject.domain.service.RedisEmailSessionService;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/auth")
 public class UserAuthController {
-
     private final EmailService emailService;
     private final RedisEmailSessionService emailSessionService;
 

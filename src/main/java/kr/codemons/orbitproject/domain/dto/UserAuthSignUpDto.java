@@ -1,17 +1,30 @@
 package kr.codemons.orbitproject.domain.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import kr.codemons.orbitproject.domain.entity.user.User;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 public class UserAuthSignUpDto {
-    private String email;
+    
+    @NotBlank
+    private String handler;
+    
+    @NotBlank
     private String name;
+    
+    @NotBlank
+    @Email
+    private String email;
+    
+    @NotBlank
     private String password;
-
+    
+    
+    private String token;
+    
     public User toUserEntity () {
-        return new User(this.name, this.email, this.password);
+        return new User(this.handler, this.name, this.email, this.password, null);
     }
 }

@@ -1,5 +1,6 @@
 package kr.codemons.orbitproject.domain.service;
 
+import kr.codemons.orbitproject.domain.dto.UserAuthSignInDto;
 import kr.codemons.orbitproject.domain.dto.UserAuthSignUpDto;
 import kr.codemons.orbitproject.domain.entity.user.User;
 import kr.codemons.orbitproject.domain.exception.DuplicateEmailException;
