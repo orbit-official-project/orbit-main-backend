@@ -9,17 +9,19 @@ import lombok.Getter;
 public class User {
 
     protected User() {}
-
-    public User(String name, String email, String password) {
+    
+    public User(String handler, String name, String email, String password, Avatar avatar) {
+        this.handler = handler;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.avatar = avatar;
     }
-
+    
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private String handler;
     private String name;
+
     private String email;
     private String password;
 

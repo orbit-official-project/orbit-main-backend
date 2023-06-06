@@ -1,10 +1,10 @@
 package kr.codemons.orbitproject.domain.service;
 
-import kr.codemons.orbitproject.domain.dto.UserAuthJoinDto;
+import kr.codemons.orbitproject.domain.dto.UserAuthSignUpDto;
 
 public interface UserAuthService {
 
-    void join (UserAuthJoinDto dto);
+    void join (UserAuthSignUpDto dto);
     void delete (String token);
     boolean validateUserToken (String token);
 

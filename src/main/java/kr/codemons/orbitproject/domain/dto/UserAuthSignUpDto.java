@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class UserAuthJoinDto {
+public class UserAuthSignUpDto {
     private String email;
     private String name;
     private String password;

@@ -1,6 +1,6 @@
 package kr.codemons.orbitproject.domain.service;
 
-import kr.codemons.orbitproject.domain.dto.UserAuthJoinDto;
+import kr.codemons.orbitproject.domain.dto.UserAuthSignUpDto;
 import kr.codemons.orbitproject.domain.entity.user.User;
 import kr.codemons.orbitproject.domain.exception.DuplicateEmailException;
 import kr.codemons.orbitproject.domain.repository.UserRepository;
@@ -16,7 +16,7 @@ public class UserAuthServiceImpl implements UserAuthService {
     private final UserRepository userRepository;
 
     @Override
-    public void join (UserAuthJoinDto dto) {
+    public void join (UserAuthSignUpDto dto) {
         if (isExistsEmail(dto.getEmail())) {
             throw new DuplicateEmailException();
         }

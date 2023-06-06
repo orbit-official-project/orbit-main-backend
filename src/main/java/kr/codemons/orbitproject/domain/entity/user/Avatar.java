@@ -13,5 +13,5 @@ public class Avatar {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String profile_image_url;
+    private String profileImageUrl;
 }
