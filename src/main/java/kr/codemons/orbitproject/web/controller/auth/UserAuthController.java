@@ -64,6 +64,7 @@ public class UserAuthController {
         }
         
         userAuthService.join(dto);
+        
         return ResponseEntity.ok("JOIN");
     }
 

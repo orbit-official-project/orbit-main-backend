@@ -12,7 +12,7 @@ public class GlobalExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(JwtException.class)
-    public void jwtExceptionHandler () { }
+    public void jwtExceptionHandler () {}
     
     
     @ResponseStatus(HttpStatus.BAD_REQUEST)
