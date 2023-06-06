@@ -3,6 +3,7 @@ package kr.codemons.orbitproject.domain.service;
 import kr.codemons.orbitproject.domain.dto.UserAuthSignUpDto;
 import kr.codemons.orbitproject.domain.entity.user.User;
 import kr.codemons.orbitproject.domain.exception.DuplicateEmailException;
+import kr.codemons.orbitproject.domain.exception.DuplicateHandlerException;
 import kr.codemons.orbitproject.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
