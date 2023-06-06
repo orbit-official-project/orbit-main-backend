@@ -20,10 +20,10 @@ public class GlobalExceptionHandler {
     public void duplicateEmailException() {
     }
     
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(RuntimeException.class)
-    public void runtimeExceptionHandler() {
-    }
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ExceptionHandler(RuntimeException.class)
+//    public void runtimeExceptionHandler() {
+//    }
     
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DuplicateHandlerException.class)

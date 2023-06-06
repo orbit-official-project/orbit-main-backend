@@ -21,6 +21,7 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public void sendCertificationMail (String email)  {
         MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = initializeMimeMessageHelper(message, email);
         javaMailSender.send(message);
     }
 

@@ -26,12 +26,12 @@ public class UserAuthController {
     
     /**
      * @name 이메일 인증 코드를 전송해주는 API
-     * @usage localhost:8080/auth/certification/test@naver.com
+     * @usage localhost:8080/auth/certificate/test@naver.com
      *
      * @param email 보안 코드를 받을 이메일
      */
     @GetMapping("/certificate/{email}")
-    public HttpEntity<?> sendCertificationCode (@PathVariable String email) {
+    public HttpEntity<?> sendCertificateCode (@PathVariable String email) {
         emailService.sendCertificationMail(email);
         return ResponseEntity.ok("DONE");
     }
