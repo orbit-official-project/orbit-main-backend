@@ -43,6 +43,6 @@ public class UserAuthServiceImpl implements UserAuthService {
     }
 
     private boolean isExistsHandler (String handler) {
-        return false
+        return false;
     }
 }
