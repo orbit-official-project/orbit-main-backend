@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import kr.codemons.orbitproject.domain.entity.user.User;
 import lombok.Getter;
 
+import java.util.Random;
+
 @Getter
 public class UserAuthSignUpDto {
     
@@ -20,7 +22,6 @@ public class UserAuthSignUpDto {
     
     @NotBlank
     private String password;
-    
     
     private String token;
     
