@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class UserAuthVerifyDto {
-
+    
     public UserAuthVerifyDto(String email, String code) {
         this.email = email;
         this.code = code;

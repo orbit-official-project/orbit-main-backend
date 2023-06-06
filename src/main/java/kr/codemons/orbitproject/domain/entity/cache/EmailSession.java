@@ -6,6 +6,12 @@ import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.TimeToLive;
 import org.springframework.data.redis.core.index.Indexed;
 
+/**
+ * Redis Entity
+ *
+ *
+ */
+
 @Getter
 @RedisHash(value = "email_session")
 public class EmailSession {

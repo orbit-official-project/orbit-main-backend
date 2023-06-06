@@ -18,10 +18,13 @@ public class UserAuthServiceImpl implements UserAuthService {
 
     @Override
     public void join (UserAuthSignUpDto dto) {
+        
+        // 이메일 중복 확인
         if (isExistsEmail(dto.getEmail())) {
             throw new DuplicateEmailException();
         }
 
+        // DB에 유저 등록
         userRepository.save(dto.toUserEntity());
     }
 
