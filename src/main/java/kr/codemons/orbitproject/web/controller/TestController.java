@@ -13,19 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/proxy")
 @RequiredArgsConstructor
 public class TestController {
-
-    private final ProxyManager proxyManager;
-
-    @GetMapping
-    public void test() {
-        Host host = new Host("127.0.0.1", 4522, false, "joyoungjun", true);
-        proxyManager.create(host);
-
-        log.info("done");
-    }
-
-    @GetMapping("/delete")
-    public void delete() {
-        proxyManager.delete("joyoungjun");
-    }
+	private final ProxyManager proxyManager;
+	
+	@GetMapping
+	public void test() {
+		Host host = new Host("127.0.0.1", 4522, false, "joyoungjun", true);
+		proxyManager.create(host);
+		
+		log.info("done");
+	}
+	
+	@GetMapping("/delete")
+	public void delete() {
+		proxyManager.delete("joyoungjun");
+	}
 }

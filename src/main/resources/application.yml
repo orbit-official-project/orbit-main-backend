@@ -1,6 +1,3 @@
-jwt:
-  secret: helloworldtest123456789!@#$%
-
 smtp:
   host: smtp.naver.com
   email: spok_nb@naver.com
@@ -30,3 +27,6 @@ spring:
         show_sql: true
         format_sql: true
         use_sql_comments: #
+
+  profiles:
+    active: jwt
