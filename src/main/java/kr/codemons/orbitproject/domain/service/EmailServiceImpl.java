@@ -13,40 +13,40 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
-
-    private final JavaMailSender javaMailSender;
-    private final RedisEmailSessionService redisEmailSessionService;
-
-    @Value("${smtp.email}") private String smtpEmail;
-
-    @Override
-    public String sendCertificationMail (String email)  {
-        String code = createCode();
-        MimeMessage message = javaMailSender.createMimeMessage();
-        MimeMessageHelper helper = initializeMimeMessageHelper(message, email, code);
-        javaMailSender.send(message);
-
-        redisEmailSessionService.add(email, code);
-        return code;
-    }
-
-    private String createCode () {
-        return String.valueOf((int)(Math.random() * (99999 - 10000 + 1)) + 10000);
-    }
-
-    private MimeMessageHelper initializeMimeMessageHelper (MimeMessage mimeMessage, String setTo, String code) {
-        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "UTF-8");
-
-        try {
-            helper.setFrom(smtpEmail);
-            helper.setTo(setTo);
-            helper.setSubject("test subject");
-            helper.setText(code);
-        }
-        catch (Exception e) {
-            throw new InitMessageHelperException();
-        }
-
-        return helper;
-    }
+	
+	private final JavaMailSender javaMailSender;
+	private final RedisEmailSessionService redisEmailSessionService;
+	
+	@Value("${smtp.email}")
+	private String smtpEmail;
+	
+	@Override
+	public String sendCertificationMail(String email) {
+		String code = createCode();
+		MimeMessage message = javaMailSender.createMimeMessage();
+		MimeMessageHelper helper = initializeMimeMessageHelper(message, email, code);
+		javaMailSender.send(message);
+		
+		redisEmailSessionService.add(email, code);
+		return code;
+	}
+	
+	private String createCode() {
+		return String.valueOf((int)(Math.random() * (99999 - 10000 + 1)) + 10000);
+	}
+	
+	private MimeMessageHelper initializeMimeMessageHelper(MimeMessage mimeMessage, String setTo, String code) {
+		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "UTF-8");
+		
+		try {
+			helper.setFrom(smtpEmail);
+			helper.setTo(setTo);
+			helper.setSubject("test subject");
+			helper.setText(code);
+		} catch (Exception e) {
+			throw new InitMessageHelperException();
+		}
+		
+		return helper;
+	}
 }

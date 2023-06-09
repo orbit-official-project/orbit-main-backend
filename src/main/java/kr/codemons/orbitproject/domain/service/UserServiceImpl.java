@@ -12,23 +12,23 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-
-    private final UserRepository userRepository;
-
-    @Override
-    public User findByName(String name) {
-        return userRepository.findByName(name)
-                .orElseThrow(UserNotFoundException::new);
-    }
-
-    @Override
-    public List<User> getAll() {
-        return userRepository.findAll();
-    }
-
-    @Override
-    public User findByHandler(String handler) {
-        return userRepository.findByHandler(handler)
-                .orElseThrow(UserHandlerNotFoundException::new);
-    }
+	
+	private final UserRepository userRepository;
+	
+	@Override
+	public User findByName(String name) {
+		return userRepository.findByName(name)
+			.orElseThrow(UserNotFoundException::new);
+	}
+	
+	@Override
+	public List<User> getAll() {
+		return userRepository.findAll();
+	}
+	
+	@Override
+	public User findByHandler(String handler) {
+		return userRepository.findByHandler(handler)
+			.orElseThrow(UserHandlerNotFoundException::new);
+	}
 }

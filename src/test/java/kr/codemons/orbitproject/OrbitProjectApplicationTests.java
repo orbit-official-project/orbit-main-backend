@@ -9,5 +9,4 @@ class OrbitProjectApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-	
 }

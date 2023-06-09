@@ -4,12 +4,12 @@ import lombok.Getter;
 
 @Getter
 public class UserAuthVerifyDto {
-    
-    public UserAuthVerifyDto(String email, String code) {
-        this.email = email;
-        this.code = code;
-    }
-
-    private String email;
-    private String code;
+	
+	public UserAuthVerifyDto(String email, String code) {
+		this.email = email;
+		this.code = code;
+	}
+	
+	private String email;
+	private String code;
 }

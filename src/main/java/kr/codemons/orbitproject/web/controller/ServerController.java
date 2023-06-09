@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/servers")
 public class ServerController {
-
-    @GetMapping
-    public HttpEntity<?> getServers () {
-        return ResponseEntity.ok("S");
-    }
+	
+	@GetMapping
+	public HttpEntity<?> getServers() {
+		return ResponseEntity.ok("S");
+	}
 }

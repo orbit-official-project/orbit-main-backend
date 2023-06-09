@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/proxy")
 @RequiredArgsConstructor
 public class TestController {
+	
 	private final ProxyManager proxyManager;
 	
 	@GetMapping

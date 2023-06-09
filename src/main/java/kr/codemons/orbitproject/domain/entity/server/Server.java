@@ -9,15 +9,15 @@ import lombok.Getter;
 @Getter
 @Entity
 public class Server {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
-    private String code;
-    private String address;
-    private int port;
-
-    private String description;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private String name;
+	private String code;
+	private String address;
+	private int port;
+	
+	private String description;
 }
