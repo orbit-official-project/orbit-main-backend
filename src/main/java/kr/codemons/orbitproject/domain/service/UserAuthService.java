@@ -8,4 +8,6 @@ public interface UserAuthService {
     void delete (String token);
     boolean validateUserToken (String token);
 
+    boolean isExistsEmail(String email);
+
 }

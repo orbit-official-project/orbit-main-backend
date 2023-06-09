@@ -4,8 +4,12 @@ jwt:
 smtp:
   host: smtp.naver.com
   email: spok_nb@naver.com
-  password: 
+  password:
   port: 465
+
+proxyServer:
+  scripts:
+    path: C:\\proxy\\scripts\\
 
 spring:
   redis:

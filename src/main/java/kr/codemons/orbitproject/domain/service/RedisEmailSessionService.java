@@ -14,7 +14,10 @@ public class RedisEmailSessionService {
     private final EmailSessionRepository emailSessionRepository;
 
     public void add (String email, String code) {
-        EmailSession emailSession = new EmailSession(email, code, 1);
+        EmailSession emailSession = EmailSession.builder()
+                .email(email)
+                .code(code)
+                .build();
 
         if (isExist(emailSession.getEmail())) {
             emailSessionRepository.delete(emailSession);
@@ -24,7 +27,11 @@ public class RedisEmailSessionService {
     }
 
     public Optional<EmailSession> get (String key) {
-        return emailSessionRepository.findByEmail(key);
+        return emailSessionRepository.findById(key);
+    }
+
+    public void delete (String key) {
+        emailSessionRepository.deleteById(key);
     }
 
     private boolean isExist (String key) {

@@ -1,6 +1,7 @@
 package kr.codemons.orbitproject.domain.service;
 
 import kr.codemons.orbitproject.domain.entity.user.User;
+import kr.codemons.orbitproject.domain.exception.UserHandlerNotFoundException;
 import kr.codemons.orbitproject.domain.exception.UserNotFoundException;
 import kr.codemons.orbitproject.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +24,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User findByHandler(String handler) {
+        return userRepository.findByHandler(handler)
+                .orElseThrow(UserHandlerNotFoundException::new);
     }
 }

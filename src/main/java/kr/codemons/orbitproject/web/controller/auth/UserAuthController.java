@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/auth")
 public class UserAuthController {
+
     private final EmailService emailService;
     private final RedisEmailSessionService emailSessionService;
     private final UserAuthService userAuthService;
-    
+
+
     /**
      * @name 이메일 인증 코드를 전송해주는 API
      * @usage localhost:8080/auth/certificate/test@naver.com
@@ -32,7 +34,7 @@ public class UserAuthController {
      */
     @GetMapping("/certificate/{email}")
     public HttpEntity<?> sendCertificateCode (@PathVariable String email) {
-        emailService.sendCertificationMail(email);
+        String code = emailService.sendCertificationMail(email);
         return ResponseEntity.ok("DONE");
     }
     
@@ -54,9 +56,17 @@ public class UserAuthController {
 
         //TODO 해야함
 
+
         return ResponseEntity.ok("verify!");
     }
-    
+
+
+    /**
+     * 회원가입 컨트롤러
+     * @param dto
+     * @param bindingResult
+     * @return
+     */
     @PostMapping("/signup")
     public HttpEntity<?> signUp (@RequestBody @Valid UserAuthSignUpDto dto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -65,7 +75,6 @@ public class UserAuthController {
         }
         
         userAuthService.join(dto);
-        
         return ResponseEntity.ok("JOIN");
     }
 
