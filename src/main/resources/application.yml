@@ -13,12 +13,14 @@ spring:
     port: 6379
 
   datasource:
-    url: jdbc:h2:tcp://localhost/~/test
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:mysql://114.202.33.83:3306/orbitx?serverTimezone=UTC&characterEncoding=UTF-8
+    username: orbitx
+    password: #
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+
     hibernate:
       ddl-auto: update
     properties:
