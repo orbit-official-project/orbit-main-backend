@@ -1,16 +1,21 @@
 package kr.codemons.orbitproject.domain.utils.proxy;
 
 import kr.codemons.orbitproject.domain.exception.DuplicateHostNameException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class ProxyManager {
 
-    @Value("${proxyServer.scripts.path}") private String scriptsPath;
+    @Value("${proxyServer.sites-enabled}") private String enabledPath;
 
     public synchronized void create (Host host) {
         if (isExists(host.getName())) {
@@ -21,10 +26,10 @@ public class ProxyManager {
         String address = protocol + host.getIp() + "orbitx.kr";
 
         try {
-            String cmd = scriptsPath
-                    + "createProxyRoute.ps1 "
+            String cmd = getCreateProxyRouteShellPath() + " "
                     + host.getName() + " "
-                    + address;
+                    + address + " "
+                    + enabledPath;
 
             Process shellProcess = Runtime.getRuntime().exec("powershell.exe " + cmd);
             shellProcess.waitFor();
@@ -33,9 +38,7 @@ public class ProxyManager {
     }
 
     public void delete (String hostName) {
-        String fullPath = scriptsPath + hostName + ".orbitx.kr";
-        File conf = new File(fullPath);
-        if (conf.exists()) { conf.delete(); }
+
     }
 
     public Optional<Host> get (String hostName) {
@@ -44,5 +47,13 @@ public class ProxyManager {
 
     private boolean isExists (String hostName) {
         return new File(hostName).exists();
+    }
+
+    private String getCreateProxyRouteShellPath () {
+        Resource resource = new ClassPathResource("scripts/createProxyRoute.ps1");
+        try { return resource.getFile().getAbsolutePath(); }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

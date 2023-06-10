@@ -8,8 +8,7 @@ smtp:
   port: 465
 
 proxyServer:
-  scripts:
-    path: C:\\proxy\\scripts\\
+  sites-enabled: C:\Users\joyou\Desktop
 
 spring:
   redis:

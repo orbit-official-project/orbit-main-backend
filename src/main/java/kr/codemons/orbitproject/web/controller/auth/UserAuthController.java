@@ -28,7 +28,7 @@ public class UserAuthController {
 
     /**
      * @name 이메일 인증 코드를 전송해주는 API
-     * @usage localhost:8080/auth/certificate/test@naver.com
+     * @usage /auth/certificate/test@naver.com
      *
      * @param email 보안 코드를 받을 이메일
      */
@@ -41,7 +41,7 @@ public class UserAuthController {
     
     /**
      * 이메일 인증 코드가 유효한지 확인하는 API
-     * ex) localhost:8080/auth/verify
+     * ex) /auth/verify
      * [Body]
      *  {
      *      code: string
@@ -55,7 +55,6 @@ public class UserAuthController {
                 .orElseThrow(InvalidVerifyCodeException::new);
 
         //TODO 해야함
-
 
         return ResponseEntity.ok("verify!");
     }
