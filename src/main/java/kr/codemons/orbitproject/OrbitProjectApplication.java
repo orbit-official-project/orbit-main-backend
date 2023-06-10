@@ -9,9 +9,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @Slf4j
 @EnableJpaAuditing
 @SpringBootApplication
-public class OrbitprojectApplication {
-
+public class OrbitProjectApplication {
+	
 	public static void main(String[] args) {
-		SpringApplication.run(OrbitprojectApplication.class, args);
+		SpringApplication.run(OrbitProjectApplication.class, args);
 	}
 }

@@ -43,7 +43,7 @@ public class UserAuthServiceImpl implements UserAuthService {
 	public boolean validateUserToken(String token) {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isExistsEmail(String email) {
 		Optional<User> findUserByEmailOpt = userRepository.findByEmail(email);

@@ -9,9 +9,10 @@ import lombok.Getter;
 @Getter
 @Entity
 public class Avatar {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String profileImageUrl;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private String profileImageUrl;
 }

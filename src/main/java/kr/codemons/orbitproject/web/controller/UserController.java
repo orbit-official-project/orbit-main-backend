@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/profile")
 @RequiredArgsConstructor
 public class UserController {
-
-    private final UserService userService;
-    
-    @GetMapping("{handler}")
-    public HttpEntity<?> getUserProfileByHandler (@PathVariable String handler) {
-        return ResponseEntity.ok(userService.findByHandler(handler));
-    }
+	
+	private final UserService userService;
+	
+	@GetMapping("{handler}")
+	public HttpEntity<?> getUserProfileByHandler(@PathVariable String handler) {
+		return ResponseEntity.ok(userService.findByHandler(handler));
+	}
 }

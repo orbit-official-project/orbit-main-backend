@@ -10,23 +10,24 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(JwtException.class)
-    public void jwtExceptionHandler() {
-    }
-    
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(DuplicateEmailException.class)
-    public void duplicateEmailException() {
-    }
-    
+	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(JwtException.class)
+	public void jwtExceptionHandler() {
+	}
+	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(DuplicateEmailException.class)
+	public void duplicateEmailException() {
+	}
+
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
 //    @ExceptionHandler(RuntimeException.class)
 //    public void runtimeExceptionHandler() {
-//    }
-    
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(DuplicateHandlerException.class)
-    public void duplicateHandlerException() {
-    }
+//    } 
+	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(DuplicateHandlerException.class)
+	public void duplicateHandlerException() {
+	}
 }

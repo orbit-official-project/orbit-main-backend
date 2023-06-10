@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/validate")
 public class ValidationController {
-
-    private final UserAuthService userAuthService;
-
-    @GetMapping("/email/{email}")
-    public boolean isExistsEmail (@PathVariable String email) {
-        return userAuthService.isExistsEmail(email);
-    }
+	
+	private final UserAuthService userAuthService;
+	
+	@GetMapping("/email/{email}")
+	public boolean isExistsEmail(@PathVariable String email) {
+		return userAuthService.isExistsEmail(email);
+	}
 }
