@@ -1,6 +1,6 @@
-package kr.codemons.orbitproject.web.controller;
+package kr.codemons.orbitproject.web.controller.server;
 
-import kr.codemons.orbitproject.domain.service.ServerService;
+import kr.codemons.orbitproject.domain.service.server.ServerUserModeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/servers")
 @RequiredArgsConstructor
-public class ServerController {
+public class ServerUserModeController {
 
-    private final ServerService serverService;
+    private final ServerUserModeService serverService;
 
     @GetMapping
     public HttpEntity<?> getServers () {

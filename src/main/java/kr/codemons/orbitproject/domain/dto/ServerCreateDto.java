@@ -1,6 +1,7 @@
 package kr.codemons.orbitproject.domain.dto;
 
 import kr.codemons.orbitproject.domain.entity.server.Server;
+import kr.codemons.orbitproject.domain.utils.SecurityProvider;
 import lombok.Getter;
 
 import java.util.UUID;
@@ -14,6 +15,7 @@ public class ServerCreateDto {
 
     public Server toServerEntity () {
         String code = UUID.randomUUID().toString();
-        return new Server(name, code, description);
+        String secret = SecurityProvider.generateSecretKey();
+        return new Server(name, code, description, secret);
     }
 }

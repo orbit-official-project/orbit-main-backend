@@ -10,18 +10,20 @@ public class Server {
 
     protected Server() {}
 
-    public Server(String name, String code, String address, int port, String description) {
+    public Server (String name, String code, String address, int port, String description, String secret) {
         this.name = name;
         this.code = code;
         this.address = address;
         this.port = port;
         this.description = description;
+        this.secret = secret;
     }
 
-    public Server(String name, String code, String description) {
+    public Server (String name, String code, String description, String secret) {
         this.name = name;
         this.code = code;
         this.description = description;
+        this.secret = secret;
     }
 
     @Id
