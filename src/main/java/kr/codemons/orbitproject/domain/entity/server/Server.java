@@ -2,6 +2,8 @@ package kr.codemons.orbitproject.domain.entity.server;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import kr.codemons.orbitproject.domain.utils.SecurityProvider;
 import lombok.Getter;
 
 @Getter
@@ -10,27 +12,20 @@ public class Server {
 
     protected Server() {}
 
-    public Server (String name, String code, String address, int port, String description, String secret) {
+    public Server(String name, String title, String description) {
         this.name = name;
-        this.code = code;
-        this.address = address;
-        this.port = port;
+        this.title = title;
         this.description = description;
-        this.secret = secret;
-    }
-
-    public Server (String name, String code, String description, String secret) {
-        this.name = name;
-        this.code = code;
-        this.description = description;
-        this.secret = secret;
+        this.secret = SecurityProvider.generateSecretKey();
+        this.code = "ORBIT_PROJECT_IS... HA..";
     }
 
     @Id
     private String name;
-    private String code;
-    private String address;
-    private int port;
+
+    private String title;
     private String description;
+
+    private String code;
     private String secret;
 }
