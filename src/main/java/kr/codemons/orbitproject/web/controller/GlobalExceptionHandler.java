@@ -1,33 +1,39 @@
 package kr.codemons.orbitproject.web.controller;
 
 import io.jsonwebtoken.JwtException;
+import kr.codemons.orbitproject.domain.exception.BadSecretKeyException;
 import kr.codemons.orbitproject.domain.exception.DuplicateEmailException;
 import kr.codemons.orbitproject.domain.exception.DuplicateHandlerException;
+import kr.codemons.orbitproject.domain.exception.ERROR_STRING;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+@ResponseStatus(HttpStatus.BAD_REQUEST)
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 	
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(JwtException.class)
-	public void jwtExceptionHandler() {
+	public String jwtExceptionHandler() {
+		return "JWT_EXCEPTION";
 	}
 	
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(DuplicateEmailException.class)
-	public void duplicateEmailException() {
+	public String duplicateEmailException() {
+		return ERROR_STRING.USER_EMAIL_DUPLICATE.name();
 	}
 
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(RuntimeException.class)
-//    public void runtimeExceptionHandler() {
-//    } 
-	
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(DuplicateHandlerException.class)
-	public void duplicateHandlerException() {
+	public String duplicateHandlerException() {
+		return ERROR_STRING.USER_HANDLER_DUPLICATE.name();
 	}
+
+	@ExceptionHandler(IllegalStateException.class)
+	public String illegalStateExceptionHandler () {
+		return ERROR_STRING.NEED_ARGUMENT.name();
+	}
+
+	@ExceptionHandler(BadSecretKeyException.class)
+	public String badSecretKeyException () { return ERROR_STRING.BAD_SECRET_KEY.name(); }
 }

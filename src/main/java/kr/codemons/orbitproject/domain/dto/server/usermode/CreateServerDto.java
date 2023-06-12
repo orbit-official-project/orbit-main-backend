@@ -1,5 +1,6 @@
-package kr.codemons.orbitproject.domain.dto;
+package kr.codemons.orbitproject.domain.dto.server.usermode;
 
+import jakarta.validation.constraints.NotBlank;
 import kr.codemons.orbitproject.domain.entity.server.Server;
 import lombok.Getter;
 
@@ -12,9 +13,9 @@ public class CreateServerDto {
         this.description = description;
     }
 
-    private String name;
-    private String title;
-    private String description;
+    @NotBlank private String name;
+    @NotBlank private String title;
+    @NotBlank private String description;
 
     public Server toServerEntity () {
         return new Server(name, title, description);

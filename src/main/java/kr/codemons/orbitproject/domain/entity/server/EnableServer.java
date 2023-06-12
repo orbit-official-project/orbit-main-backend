@@ -1,13 +1,11 @@
 package kr.codemons.orbitproject.domain.entity.server;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 @Getter
 @Entity
+@Table(name = "E_SERVER")
 public class EnableServer {
 
     protected EnableServer () {}
@@ -20,6 +18,9 @@ public class EnableServer {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @OneToOne
     @JoinColumn(name = "SERVER_NAME")
     private Server server;

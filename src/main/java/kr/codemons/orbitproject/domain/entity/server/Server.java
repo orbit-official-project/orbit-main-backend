@@ -18,6 +18,7 @@ public class Server {
         this.description = description;
         this.secret = SecurityProvider.generateSecretKey();
         this.code = "ORBIT_PROJECT_IS... HA..";
+        this.enable = false;
     }
 
     @Id
@@ -28,4 +29,5 @@ public class Server {
 
     private String code;
     private String secret;
+    private boolean enable;
 }
