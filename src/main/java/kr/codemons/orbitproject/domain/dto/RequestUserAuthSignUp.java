@@ -6,7 +6,7 @@ import kr.codemons.orbitproject.domain.entity.user.User;
 import lombok.Getter;
 
 @Getter
-public class UserAuthSignUpDto {
+public class RequestUserAuthSignUp {
 	
 	@NotBlank
 	private String handler;
@@ -20,9 +20,7 @@ public class UserAuthSignUpDto {
 	
 	@NotBlank
 	private String password;
-	
-	private String token;
-	
+
 	public User toUserEntity() {
 		return new User(this.handler, this.name, this.email, this.password, null);
 	}

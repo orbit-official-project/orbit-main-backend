@@ -1,4 +1,4 @@
-package kr.codemons.orbitproject.domain.exception;
+package kr.codemons.orbitproject.domain.exception.server;
 
 public class ServerNotFoundException extends RuntimeException {
     public ServerNotFoundException() {

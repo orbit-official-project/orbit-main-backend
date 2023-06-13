@@ -10,7 +10,7 @@ public class EnableServer {
 
     protected EnableServer () {}
 
-    public EnableServer(Server server, String address, int port, boolean https) {
+    public EnableServer (Server server, String address, int port, boolean https) {
         this.server = server;
         this.address = address;
         this.port = port;

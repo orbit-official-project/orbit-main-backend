@@ -1,4 +1,4 @@
-package kr.codemons.orbitproject.domain.exception;
+package kr.codemons.orbitproject.domain.exception.user;
 
 public class UserHandlerNotFoundException extends RuntimeException {
 	

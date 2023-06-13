@@ -1,5 +1,7 @@
 package kr.codemons.orbitproject.domain.exception;
 
+import kr.codemons.orbitproject.domain.exception.user.MalformedEmailAuthentication;
+
 public enum ERROR_STRING {
     USER_NOT_FOUND,
     USER_DUPLICATE,
@@ -13,5 +15,8 @@ public enum ERROR_STRING {
 
     NEED_ARGUMENT,
     INCORRECT_AUTHORIZATION,
-    BAD_SECRET_KEY
+    BAD_SECRET_KEY,
+
+    MALFORMED_EMAIL_AUTHENTICATION,
+    UNAUTHENTICATED_EMAIL
 }

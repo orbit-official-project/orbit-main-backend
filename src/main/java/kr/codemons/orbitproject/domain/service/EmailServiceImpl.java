@@ -1,7 +1,7 @@
 package kr.codemons.orbitproject.domain.service;
 
 import jakarta.mail.internet.MimeMessage;
-import kr.codemons.orbitproject.domain.exception.InitMessageHelperException;
+import kr.codemons.orbitproject.domain.exception.user.InitMessageHelperException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

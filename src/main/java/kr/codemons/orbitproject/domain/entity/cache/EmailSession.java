@@ -9,13 +9,23 @@ import org.springframework.data.redis.core.RedisHash;
  * Redis Entity
  */
 
-@Builder
 @Getter
 @RedisHash(value = "EmailSession", timeToLive = 300L)
 public class EmailSession {
-	
+
+	public EmailSession (String email, String code) {
+		this.email = email;
+		this.code = code;
+		this.done = false;
+	}
+
 	@Id
 	private String email;
 	private String code;
-	
+	private boolean done;
+
+
+	public void done() {
+		this.done = true;
+	}
 }

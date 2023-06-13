@@ -1,12 +1,11 @@
 package kr.codemons.orbitproject.web.controller.auth;
 
 import jakarta.validation.Valid;
-import kr.codemons.orbitproject.domain.dto.UserAuthSignUpDto;
-import kr.codemons.orbitproject.domain.dto.UserAuthVerifyDto;
-import kr.codemons.orbitproject.domain.entity.cache.EmailSession;
-import kr.codemons.orbitproject.domain.exception.InvalidVerifyCodeException;
+import kr.codemons.orbitproject.domain.dto.RequestEmailAuthentication;
+import kr.codemons.orbitproject.domain.dto.RequestUserAuthSignIn;
+import kr.codemons.orbitproject.domain.dto.RequestUserAuthSignUp;
+import kr.codemons.orbitproject.domain.dto.response.ResponseUserProfile;
 import kr.codemons.orbitproject.domain.service.EmailService;
-import kr.codemons.orbitproject.domain.service.RedisEmailSessionService;
 import kr.codemons.orbitproject.domain.service.UserAuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 public class UserAuthController {
 
     private final EmailService emailService;
-    private final RedisEmailSessionService emailSessionService;
     private final UserAuthService userAuthService;
 
 
@@ -41,44 +39,43 @@ public class UserAuthController {
     
     /**
      * 이메일 인증 코드가 유효한지 확인하는 API
-     * ex) /auth/verify
+     * ex) /auth/validate/email
      * [Body]
      *  {
      *      code: string
      *      email: string
      *  }
-     * @param verifyDto 이메일과 보안코드가 담긴 DTO
+     * @param authentication 이메일과 보안코드가 담긴 DTO
      */
-    @PostMapping("/verify")
-    public HttpEntity<?> verifyCode (UserAuthVerifyDto verifyDto) {
-        EmailSession findEmailSession = emailSessionService.get(verifyDto.getEmail())
-                .orElseThrow(InvalidVerifyCodeException::new);
-
-        //TODO 해야함
-
-        return ResponseEntity.ok("verify!");
+    @PostMapping("/validate/email")
+    public HttpEntity<?> emailCodeValidate (@RequestBody RequestEmailAuthentication authentication) {
+        userAuthService.emailAuthenticate(authentication);
+        return ResponseEntity.ok("OK");
     }
 
-
     /**
-     * 회원가입 컨트롤러
+     * 회원가입 API
      * @param dto
      * @param bindingResult
      * @return
      */
     @PostMapping("/signup")
-    public HttpEntity<?> signUp (@RequestBody @Valid UserAuthSignUpDto dto, BindingResult bindingResult) {
+    public HttpEntity<?> signUp (@RequestBody @Valid RequestUserAuthSignUp dto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            log.info(bindingResult.toString());
-            throw new RuntimeException(); // TODO 커스텀 익셉션 추가
+            throw new IllegalStateException(); // TODO 커스텀 익셉션 추가
         }
-        
+
         userAuthService.join(dto);
         return ResponseEntity.ok("JOIN");
     }
 
+    /**
+     * 로그인 API
+     * @return
+     */
     @PostMapping("/login")
-    public HttpEntity<?> login () {
-        return ResponseEntity.ok("LOGIN");
+    public HttpEntity<ResponseUserProfile> signIn (@RequestBody RequestUserAuthSignIn signInDto) {
+        ResponseUserProfile loginUser = userAuthService.login(signInDto);
+        return ResponseEntity.ok(loginUser);
     }
 }

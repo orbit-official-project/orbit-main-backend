@@ -3,8 +3,8 @@ package kr.codemons.orbitproject.domain.service.server;
 import kr.codemons.orbitproject.domain.dto.server.usermode.CreateServerDto;
 import kr.codemons.orbitproject.domain.entity.server.EnableServer;
 import kr.codemons.orbitproject.domain.entity.server.Server;
-import kr.codemons.orbitproject.domain.exception.DuplicateHostNameException;
-import kr.codemons.orbitproject.domain.exception.ServerNotFoundException;
+import kr.codemons.orbitproject.domain.exception.user.DuplicateHostNameException;
+import kr.codemons.orbitproject.domain.exception.server.ServerNotFoundException;
 import kr.codemons.orbitproject.domain.repository.EnableServerRepository;
 import kr.codemons.orbitproject.domain.repository.ServerRepository;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +34,7 @@ public class ServerService {
     public Server getServer (String host) {
         return readyServerRepository.findById(host).orElseThrow(ServerNotFoundException::new);
     }
+
     public List<Server> getServers () { return readyServerRepository.findAll(); }
 
     public EnableServer getServerDetail (String host) {
@@ -42,16 +43,17 @@ public class ServerService {
                 .orElseThrow(ServerNotFoundException::new);
     }
 
+    public void modifyReadyServer (Server modified, Server target) {
+
+    }
+
+    public void modifyEnabledServer (EnableServer modified, EnableServer target) {
+
+    }
+
     public boolean isExistsHostName (String hostName) {
         Optional<Server> findServer = readyServerRepository.findById(hostName);
         return findServer.isPresent();
     }
 
-    public void modifyReadyServer(Server modified) {
-
-    }
-
-    public void modifyEnabledServer (EnableServer modified) {
-
-    }
 }

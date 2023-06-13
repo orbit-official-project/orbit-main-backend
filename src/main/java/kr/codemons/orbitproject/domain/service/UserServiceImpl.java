@@ -1,8 +1,8 @@
 package kr.codemons.orbitproject.domain.service;
 
 import kr.codemons.orbitproject.domain.entity.user.User;
-import kr.codemons.orbitproject.domain.exception.UserHandlerNotFoundException;
-import kr.codemons.orbitproject.domain.exception.UserNotFoundException;
+import kr.codemons.orbitproject.domain.exception.user.UserHandlerNotFoundException;
+import kr.codemons.orbitproject.domain.exception.user.UserNotFoundException;
 import kr.codemons.orbitproject.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

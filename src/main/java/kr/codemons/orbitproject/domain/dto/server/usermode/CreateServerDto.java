@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public class CreateServerDto {
 
-    public CreateServerDto(String name, String title, String description) {
+    public CreateServerDto (String name, String title, String description) {
         this.name = name;
         this.title = title;
         this.description = description;
@@ -18,6 +18,6 @@ public class CreateServerDto {
     @NotBlank private String description;
 
     public Server toServerEntity () {
-        return new Server(name, title, description);
+        return new Server(name, title, description, null);
     }
 }

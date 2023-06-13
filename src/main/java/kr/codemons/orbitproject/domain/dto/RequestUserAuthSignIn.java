@@ -5,9 +5,9 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class UserAuthSignInDto {
+public class RequestUserAuthSignIn {
 	
 	private String email;
-	private String name;
 	private String password;
+
 }

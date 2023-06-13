@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ServerKernelModeController {
 
     private final ServerKernelModeService kernelModeService;
-
+    
     @PostMapping("/enable")
     public void enableServer (@Valid @RequestBody EnableServerDto dto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -29,6 +29,6 @@ public class ServerKernelModeController {
 
     @PostMapping("/disable")
     public void disableServer () {
-        
+
     }
 }

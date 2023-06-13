@@ -1,10 +1,12 @@
 package kr.codemons.orbitproject.web.controller;
 
 import io.jsonwebtoken.JwtException;
-import kr.codemons.orbitproject.domain.exception.BadSecretKeyException;
-import kr.codemons.orbitproject.domain.exception.DuplicateEmailException;
-import kr.codemons.orbitproject.domain.exception.DuplicateHandlerException;
+import kr.codemons.orbitproject.domain.exception.server.BadSecretKeyException;
+import kr.codemons.orbitproject.domain.exception.user.DuplicateEmailException;
+import kr.codemons.orbitproject.domain.exception.user.DuplicateHandlerException;
 import kr.codemons.orbitproject.domain.exception.ERROR_STRING;
+import kr.codemons.orbitproject.domain.exception.user.MalformedEmailAuthentication;
+import kr.codemons.orbitproject.domain.exception.user.UnAuthenticatedEmailException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -36,4 +38,10 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(BadSecretKeyException.class)
 	public String badSecretKeyException () { return ERROR_STRING.BAD_SECRET_KEY.name(); }
+
+	@ExceptionHandler(MalformedEmailAuthentication.class)
+	public String malformedEmailAuthenticationException () { return ERROR_STRING.MALFORMED_EMAIL_AUTHENTICATION.name(); }
+
+	@ExceptionHandler(UnAuthenticatedEmailException.class)
+	public String unAuthenticatedEmailException () { return ERROR_STRING.UNAUTHENTICATED_EMAIL.name(); }
 }

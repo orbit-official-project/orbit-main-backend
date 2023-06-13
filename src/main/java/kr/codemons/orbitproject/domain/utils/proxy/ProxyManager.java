@@ -1,6 +1,6 @@
 package kr.codemons.orbitproject.domain.utils.proxy;
 
-import kr.codemons.orbitproject.domain.exception.DuplicateHostNameException;
+import kr.codemons.orbitproject.domain.exception.user.DuplicateHostNameException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
