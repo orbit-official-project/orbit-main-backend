@@ -1,6 +1,7 @@
 package kr.codemons.orbitproject.domain.service;
 
 import jakarta.mail.internet.MimeMessage;
+import kr.codemons.orbitproject.domain.entity.cache.EmailSession;
 import kr.codemons.orbitproject.domain.exception.user.InitMessageHelperException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,13 +22,13 @@ public class EmailServiceImpl implements EmailService {
 	private String smtpEmail;
 	
 	@Override
-	public String sendCertificationMail(String email) {
+	public String sendCertificatedMail(String email) {
 		String code = createCode();
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper = initializeMimeMessageHelper(message, email, code);
 		javaMailSender.send(message);
 		
-		redisEmailSessionService.add(email, code);
+		redisEmailSessionService.save(new EmailSession(email, code));
 		return code;
 	}
 	
@@ -41,7 +42,7 @@ public class EmailServiceImpl implements EmailService {
 		try {
 			helper.setFrom(smtpEmail);
 			helper.setTo(setTo);
-			helper.setSubject("test subject");
+			helper.setSubject("[오르빗] 이메일 인증 코드가 도착했어요");
 			helper.setText(code);
 		} catch (Exception e) {
 			throw new InitMessageHelperException();

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usermode")
+@RequestMapping("/mode/user")
 @RequiredArgsConstructor
 public class ServerUserModeController {
 

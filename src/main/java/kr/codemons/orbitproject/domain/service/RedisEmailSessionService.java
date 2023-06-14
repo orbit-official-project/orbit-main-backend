@@ -12,22 +12,18 @@ import java.util.Optional;
 public class RedisEmailSessionService {
 	
 	private final EmailSessionRepository emailSessionRepository;
-	
-	public void add (String email, String code) {
-		EmailSession emailSession = new EmailSession(email, code);
 
-		if (isExist(emailSession.getEmail())) {
-			emailSessionRepository.delete(emailSession);
-		}
+	public void save (EmailSession emailSession) {
 		emailSessionRepository.save(emailSession);
 	}
-	
-	public EmailSession get(String key) throws RuntimeException {
+
+	public EmailSession get (String key) throws RuntimeException {
 		return emailSessionRepository.findById(key).orElseThrow();
 	}
 	public void delete(String key) {
 		emailSessionRepository.deleteById(key);
 	}
+
 	private boolean isExist(String key) {
 		return emailSessionRepository.existsById(key);
 	}

@@ -13,7 +13,7 @@ public interface UserAuthService {
 
 	boolean validateUserToken(String token);
 	
-	boolean isExistsEmail(String email);
+	boolean isExistEmail(String email);
 
 	void emailAuthenticate (RequestEmailAuthentication authentication);
 }

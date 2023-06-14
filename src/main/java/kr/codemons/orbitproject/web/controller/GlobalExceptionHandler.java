@@ -1,7 +1,8 @@
 package kr.codemons.orbitproject.web.controller;
 
 import io.jsonwebtoken.JwtException;
-import kr.codemons.orbitproject.domain.exception.server.BadSecretKeyException;
+import kr.codemons.orbitproject.domain.exception.MissingParameterException;
+import kr.codemons.orbitproject.domain.exception.server.InvalidSecretKeyException;
 import kr.codemons.orbitproject.domain.exception.user.DuplicateEmailException;
 import kr.codemons.orbitproject.domain.exception.user.DuplicateHandlerException;
 import kr.codemons.orbitproject.domain.exception.ERROR_STRING;
@@ -31,13 +32,13 @@ public class GlobalExceptionHandler {
 		return ERROR_STRING.USER_HANDLER_DUPLICATE.name();
 	}
 
-	@ExceptionHandler(IllegalStateException.class)
-	public String illegalStateExceptionHandler () {
+	@ExceptionHandler({IllegalStateException.class, MissingParameterException.class})
+	public String missingParameterException () {
 		return ERROR_STRING.NEED_ARGUMENT.name();
 	}
 
-	@ExceptionHandler(BadSecretKeyException.class)
-	public String badSecretKeyException () { return ERROR_STRING.BAD_SECRET_KEY.name(); }
+	@ExceptionHandler(InvalidSecretKeyException.class)
+	public String badSecretKeyException () { return ERROR_STRING.INVALID_SECRET_KEY.name(); }
 
 	@ExceptionHandler(MalformedEmailAuthentication.class)
 	public String malformedEmailAuthenticationException () { return ERROR_STRING.MALFORMED_EMAIL_AUTHENTICATION.name(); }

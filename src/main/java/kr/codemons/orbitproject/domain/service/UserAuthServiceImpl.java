@@ -11,6 +11,7 @@ import kr.codemons.orbitproject.domain.repository.UserRepository;
 import kr.codemons.orbitproject.domain.utils.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -23,12 +24,12 @@ public class UserAuthServiceImpl implements UserAuthService {
 	private final JwtProvider jwtProvider;
 
 	@Override
-	public ResponseUserProfile login(RequestUserAuthSignIn dto) {
+	public ResponseUserProfile login (RequestUserAuthSignIn dto) {
 		User findUser = userRepository.findByEmail(dto.getEmail())
 				.orElseThrow(UserNotFoundException::new);
 
 		if (!findUser.getPassword().equals(dto.getPassword())) {
-			throw new IllegalStateException(); }
+			throw new UserNotFoundException(); }
 
 		String token = jwtProvider.createToken(1, findUser.getEmail());
 
@@ -45,11 +46,11 @@ public class UserAuthServiceImpl implements UserAuthService {
 		}
 
 		// 이메일, 핸들러 중복 확인
-		if (isExistsEmail(dto.getEmail())) {
+		if (isExistEmail(dto.getEmail())) {
 			throw new DuplicateEmailException();
 		}
 		
-		if (isExistsHandler(dto.getHandler())) {
+		if (isExistHandler(dto.getHandler())) {
 			throw new DuplicateHandlerException();
 		}
 
@@ -59,28 +60,35 @@ public class UserAuthServiceImpl implements UserAuthService {
 	}
 
 	@Override
+	@Transactional
 	public void emailAuthenticate (RequestEmailAuthentication authentication) {
 		EmailSession emailSession = redisEmailSessionService.get(authentication.getEmail());
+
+		if (isExistEmail(authentication.getEmail())) {
+			throw new DuplicateEmailException();
+		}
 
 		if (emailSession.isDone() || !emailSession.getCode().equals(authentication.getInputCode())) {
 			throw new MalformedEmailAuthentication();
 		}
+
 		emailSession.done();
+		redisEmailSessionService.save(emailSession);
 	}
 
 	
 	@Override
-	public boolean validateUserToken(String token) {
+	public boolean validateUserToken (String token) {
 		return false;
 	}
 	
 	@Override
-	public boolean isExistsEmail(String email) {
+	public boolean isExistEmail(String email) {
 		Optional<User> findUserByEmailOpt = userRepository.findByEmail(email);
 		return findUserByEmailOpt.isPresent();
 	}
 
-	private boolean isExistsHandler(String handler) {
+	private boolean isExistHandler(String handler) {
 		Optional<User> findUserByHandlerOpt = userRepository.findByHandler(handler);
 		return findUserByHandlerOpt.isPresent();
 	}

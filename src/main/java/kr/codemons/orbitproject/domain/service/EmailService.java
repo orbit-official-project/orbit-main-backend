@@ -3,5 +3,5 @@ package kr.codemons.orbitproject.domain.service;
 
 public interface EmailService {
 	
-	String sendCertificationMail(String email);
+	String sendCertificatedMail(String email);
 }

@@ -15,7 +15,7 @@ public class ValidationController {
 	private final UserAuthService userAuthService;
 	
 	@GetMapping("/email/{email}")
-	public boolean isExistsEmail(@PathVariable String email) {
-		return userAuthService.isExistsEmail(email);
+	public boolean isExistEmail (@PathVariable String email) {
+		return userAuthService.isExistEmail(email);
 	}
 }
